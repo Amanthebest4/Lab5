@@ -30,6 +30,31 @@ public class BankAccount {
         /*
          * Implement this function
          */
+        this.ownerName = name;
+        this.accountType = accountCategory;
+        this.accountNumber = Bank.getNumberOfAccount();
+        Bank.incrementNumber();
+        this.accountBalance = 0;
+    }
+
+    public boolean deposit(final double amount) {
+        if (amount < 0) {
+            return false;
+        }
+        this.accountBalance += amount;
+        return true;
+    }
+
+    public boolean withdraw(final double amount) {
+        if (amount < 0 || amount > this.accountBalance) {
+            return false;
+        }
+        this.accountBalance -= amount;
+        return true;
+    }
+
+    public void setOwnerName(final String name) {
+        this.ownerName = name;
     }
 
     /*
